@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Contrasting local and global variables</title>
+
+<script type="text/javascript">
+
+function functionname(variable1, variable2){
+	document.write('variable1 = ' + variable1 + '<br />');
+	document.write('variable2 = ' + variable2 + '<br />');
+	
+}
+
+
+
+</script>
+
+
+
+
+
+
+</head>
+
+<body>
+
+<script type="text/javascript">
+
+var variable1 = 3; // define global variable
+functionname('bob', 32);
+document.write('variable1 = ' + variable1 + '<br />');
+
+
+
+</script>
+</body>
+</html>

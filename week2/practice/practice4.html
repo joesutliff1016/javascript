@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Function expressions (anonymous functions)</title>
+</head>
+
+<body>
+<script type="text/javascript">
+
+// Function declaration
+/*function functionname(arguments){
+	// Code for function here
+	
+}
+
+// Function Expression
+var variablename = function(arguments){
+	
+}; // Ended with semicolon to be proper with coding
+variablename(arguments);
+*/
+var send_alert = function(textpart1, textpart2){
+	window.alert(textpart1 + textpart2);
+}
+send_alert('This is ', 'broken');
+
+/*// Using functions with event handlers
+function do_not_click(){
+	window.alert('Do not click on my page!');
+}
+//do_not_click(); // function runs immediately
+document.onclick = do_not_click; // Assign function (without perenthesis) to the click event*/
+
+document.onclick = function(){ // Assign function expression to the click event
+window.alert('Do not click on my page!');
+}
+
+
+
+
+</script>
+</body>
+</html>

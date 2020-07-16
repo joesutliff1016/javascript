@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>JavaScript Introduction</title>
+<script type="text/javascript" src="yourfile.js"></script>
+</head>
+
+<body>
+<script type="text/javascript">
+
+ javascript code here
+
+comment 1
+comment 2
+
+
+document.write("Hello World!<br />");
+
+var first_name = 'James';
+var last_name = 'Smith';
+//last_name = 'O\'Neil';
+
+var some_number = 33;
+var some_other_number = '10';
+
+//some_number = true;
+//some_number = false;
+//some_number = null;
+
+//var total = some_number + 10;
+var total = some_number + some_other_number;
+document.write(total + '<br />');
+
+var full_name = 'Have a nice day, ' + first_name + ' ' + last_name;
+document.write(full_name + '<br />');
+
+document.write(typeof some_other_number + '<br />');
+document.write(typeof +some_other_number + '<br />');
+
+if(first_name == 'bob'){
+	document.write('Hi, Bob!<br />');
+} else if(first_name == 'James') {
+	document.write('Hi, James!<br />');
+	
+} else{
+	document.write('I don\'t know you<br />');
+}
+test_loop:
+for(var i = 1; i < 11; i++){
+	
+	if(i == 5){
+		//break;
+		//break test_loop; //break out of a named loop
+		continue;
+	}
+	document.write(i + '. This is a line of text<br />');
+}
+
+window.alert('Hi there');
+var play_game = window.confirm('Would you like to play a game?'); 
+returns true or false(boolean)
+var play_game2 = window.prompt('Enter a guess');
+
+if(isNaN(play_game2)){
+	window.alert('Please enter a number');
+}else {
+	window.alert('Your guess was ' + play_game2);
+}
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

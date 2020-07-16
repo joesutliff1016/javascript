@@ -1,0 +1,14 @@
+"use strict";
+
+var getphone = document.getElementById("getphone");
+getphone.addEventListener("submit", function(event) {
+	var phone = document.getElementById("phone").value,
+	tomatch = /^\d{3}-\d{3}-\d{4}$/;
+	event.preventDefault();
+	if(tomatch.test(phone)) {
+		alert("Phone number validated.");
+	}
+	else {
+		alert("Invalid phone number entered. Valid format is xxx-xxx-xxxx.");
+	}
+}, false);

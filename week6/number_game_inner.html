@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Number guessing game</title>
+</head>
+
+  <body>
+      <h1>Choose a number between 1 and 100</h1>
+
+<p id="lastResult"></p>
+<p id="lowOrHi"></p>
+<p id="invalid"></p>
+<p id="totalCount"></p>
+
+
+<div class="form">
+  <label for="guessField"></label><input type="text" id="guessField"/>
+  <button id="guessSubmit">Guess</button>
+</div>
+
+
+
+  
+  
+  <script type="text/javascript">
+  /* <![CDATA[ */
+ 
+function replay(){
+	location.reload();
+}
+
+
+var random_num = Math.floor(Math.random() * 100) + 1;
+var guesses = document.getElementById("guesses");
+var lastResult = document.getElementById("lastResult");
+var lowOrHi = document.getElementById("lowOrHi");
+var guessSubmit = document.getElementById("guessSubmit");
+var guessField= document.getElementById("guessField");
+var guessCount = 0;
+var totalCount = document.getElementById("totalCount");
+
+
+
+
+function checkGuess() {
+  var user_guess = Number(guessField.value);
+  
+  
+  if(isNaN(user_guess)) {
+    invalid.innerHTML = "Please enter a number.";
+    
+  } else {
+    
+    if(user_guess == random_num) {
+	  lowOrHi.innerHTML = "";
+      lastResult.innerHTML = "Congratulations! You guessed my number: " + random_num;
+	  guessField.value = "";
+	  
+	  var delete_guessField = document.getElementById("guessField");
+	  var delete_guessSubmit = document.getElementById("guessSubmit");
+	  
+	
+      delete_guessSubmit.parentNode.removeChild(delete_guessSubmit);
+	  delete_guessField.parentNode.removeChild(delete_guessField);
+	  
+	
+	  get_my_button();
+
+
+    } else {
+   
+      if(user_guess < random_num) {
+        lowOrHi.innerHTML = "Too low!";
+      } else if(user_guess > random_num) {
+        lowOrHi.innerHTML = "Too high!";
+      }
+    }
+    guessCount++;
+    guessField.value = "";
+	totalCount.innerHTML = "Tries: " + guessCount; 
+  }
+}
+
+
+function get_my_button(){
+	var x = document.createElement("BUTTON");
+	var t = document.createTextNode("Play Again?");
+	x.appendChild(t);
+	document.body.appendChild(x).onclick = replay;
+
+}
+
+guessSubmit.onclick = checkGuess;
+
+/* ]]> */
+  </script>
+  </body>
+</html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Final</title>
+<style type="text/css">
+
+#productform{
+	width:300px;
+	
+}
+#customerinfo{
+	width:300px;
+	
+}
+#customeraddress{
+	width:300px;
+	
+}
+#shippingaddress{
+	width:300px;
+}
+
+#div1 {
+	text-align:right;
+}
+#div2 {
+	text-align:right;
+	margin-top:50px;
+}
+#div3 {
+	text-align:right;
+}
+#div4 {
+	text-align:right;
+}
+textarea {
+	width:137px;
+}
+#lab_description {
+	position:absolute;
+	top:75px;
+	left:68px;
+}
+#street2 {
+	margin-top:5px;
+}
+#ship_street2 {
+	margin-top:5px;
+}
+
+
+
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+"use strict";
+
+
+
+function validateProductData() {
+	var missingFields = false;
+	var strFields = "";
+	
+	if(productform.name.value == "") {
+		missingFields = true;
+		strFields += "Product Name must be filled out!\n";
+	}
+
+    if(productform.description.value == "") {
+		missingFields = true;
+		strFields += "Product Description must be filled out!\n";
+	}
+	
+	if(productform.price.value == "" ) {
+		missingFields = true;
+		strFields += "Product price must be filled out.\n";
+	}
+	if(productform.price.value <= 0) {
+		missingFields = true;
+		strFields += "Product price must be greater than zero.\n";
+	}
+	var price = document.getElementById("price").value;
+	var tomatch = /^(\d*([.,](?=\d{3}))?\d+)+((?!\2)[.,]\d\d)?$/;
+	if(!tomatch.test(price)) {
+		missingFields = true;
+		strFields += "Invalid price entered.\n";
+	}
+
+	if(missingFields) {
+		alert("You must correct the following fields before continuing:\n" + strFields
+		);
+		return false;
+	}
+	return true;
+}
+
+
+
+//Validate the customer form
+function validateCustomerData(){
+	var missingFields = false;
+	var strFields = "";
+	
+	if(customerinfo.firstname.value == "") {
+		missingFields = true;
+		strFields += "First Name must be filled out!\n";
+	
+	}
+	if(customerinfo.lastname.value == "") {
+		missingFields = true;
+		strFields += "Last Name must be filled out!\n";
+
+	}
+	var phone = document.getElementById("phone").value;
+	var tomatch  = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
+	if(!tomatch.test(phone)){
+		missingFields = true;
+		strFields += "Invalid Phone number entered.\n";
+	}
+   
+    var email = document.getElementById("email").value;
+	var tomatch = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	if(!tomatch.test(email)){
+		missingFields = true;
+		strFields += "Invalid Email entered.\n";
+	}
+	
+	
+
+	//billing
+	if(customeraddress.street.value == "") {
+		missingFields = true;
+		strFields += "Street must be filled out!\n";
+	}
+	
+	if(customeraddress.city.value == "") {
+		missingFields = true;
+		strFields += "City must be filled out!\n";
+	}
+	
+	if(customeraddress.state.value == "") {
+		missingFields = true;
+		strFields += "State must be filled out!\n";
+
+	}
+	var zip = document.getElementById("zip").value;
+	var tomatch = /(^\d{5}$)|(^\d{5}-\d{4}$)/;
+	if(!tomatch.test(zip)){
+		missingFields = true;
+		strFields += "Invalid Zip Code entered.\n";
+	}
+	
+	
+	
+	//shipping
+	if(shippingaddress.ship_street.value == "") {
+		missingFields = true;
+		strFields += "Shipping address street must be filled out!\n";
+	
+	}
+	if(shippingaddress.ship_city.value == "") {
+		missingFields = true;
+		strFields += "Shipping address city must be filled out!\n";
+	
+	}
+	if(shippingaddress.ship_state.value == "") {
+		missingFields = true;
+		strFields += "Shipping address state must be filled out!\n";
+	}
+	var ship_zip = document.getElementById("ship_zip").value;
+	var tomatch = /(^\d{5}$)|(^\d{5}-\d{4}$)/;
+	if(!tomatch.test(ship_zip)){
+		missingFields = true;
+		strFields += "Invalid Shipping Zip Code entered.\n";
+	}
+	if(missingFields) {
+		alert("You must correct the following fields before continuing:\n" + strFields
+		);
+		return false;
+	}
+	return true;
+}
+		
+
+function shipsame(box) {
+	if(box.checked == true) {
+		ship_street.value = street.value;
+		ship_street2.value = street2.value
+		ship_city.value = city.value;
+		ship_state.value = state.value;
+		ship_zip.value = zip.value;
+	}
+	if(box.checked == false) {
+		ship_street.value = "";
+		ship_street2.value = "";
+		ship_city.value = "";
+		ship_state.value = "";
+		ship_zip.value = "";
+	}
+}
+
+/* ]]> */
+</script>
+</head>
+
+<body>
+
+<!--Product form-->
+<div id="div1">
+
+<form id="productform" action="">
+<fieldset id="fieldset">
+<legend>Enter Product Information</legend>
+<label for="name">Product Name:</label>
+<input type="text" id="name" />
+<br />
+<br />
+
+<label id="lab_description">Description:</label><textarea id="description" rows="" cols=""></textarea>
+<br />
+<br />
+
+
+<label for="price">Price:</label>
+<input type="text" id="price" />
+<br />
+<br />
+
+<label for="category">Category:</label>
+<input type="text" id="category" />
+<br />
+<br />
+
+<label for="altText">Photo Alt Text:</label>
+<input type="text" id="altText" />
+<br />
+<br />
+
+<label for="ingredients">Ingredients:</label>
+<input type="text" id="ingredients" />
+<br />
+<br />
+
+<input type="submit" value="Submit" onclick="validateProductData()" />
+</fieldset>
+</form>
+
+</div>
+<!--end of Product form-->
+
+
+<!--Customer form-->
+<div id="div2">
+<form id="customerinfo" action="">
+<fieldset id="fieldset2">
+<legend>Please enter your information</legend>
+
+
+<!--Customer info-->
+<label for="firstname">First Name:</label>
+<input type="text" id="firstname"/>
+<br />
+<br />
+
+<label for="lastname">Last Name:</label>
+<input type="text" id="lastname"/>
+<br />
+<br />
+
+<label for="phone">Phone:</label>
+<input type="text" id="phone"/>
+<br />
+<br />
+
+<label for="fax">Fax:</label>
+<input type="text" id="fax"/>
+<br />
+<br />
+
+<label for="email">Email:</label>
+<input type="text" id="email"/>
+<br />
+<br />
+</fieldset>
+</form>
+</div>
+
+<!--Customer billing-->
+<div id="div3">
+<form id="customeraddress"  action="">
+<fieldset id="fieldset3">
+<legend>Billing Address:</legend>
+<br />
+<br />
+
+<label for="street">Street:</label>
+<input type="text" id="street" maxlength="20"/>
+<input type="text" id="street2" maxlength="20"/>
+<br />
+<br />
+
+<label for="city">City:</label>
+<input type="text" id="city"/>
+<br />
+<br />
+
+<label for="state">State:</label>
+<input type="text" id="state"/>
+<br />
+<br />
+
+<label for="zip">Zip:</label>
+<input type="text" id="zip"/>
+<br />
+<br />
+</fieldset>
+</form>
+</div>
+
+<!--Customer shipping-->
+<div id="div4">
+<form id="shippingaddress"  action="">
+<fieldset id="fieldset4">
+<legend>Shipping Address:</legend>
+<br />
+
+<input type="checkbox" onclick="shipsame(this)"/>Ship to billing address
+<br />
+<br />
+
+
+<label for="ship_street">Street:</label>
+<input type="text" id="ship_street" maxlength="20"/>
+<input type="text" id="ship_street2" maxlength="20"/>
+<br />
+<br />
+
+<label for="ship_city">City:</label>
+<input type="text" id="ship_city"/>
+<br />
+<br />
+<label for="ship_state">State:</label>
+<input type="text" id="ship_state"/>
+<br />
+<br />
+<label for="ship_zip">Zip:</label>
+<input type="text" id="ship_zip"/>
+<br />
+<br />
+
+<input type="submit" value="Submit" onclick="validateCustomerData()"/>
+</fieldset>
+</form>
+</div>
+<!--end of Customer form-->
+
+
+
+</body>
+</html>

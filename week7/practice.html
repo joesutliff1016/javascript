@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Window Object</title>
+
+<script type="text/javascript">
+
+//document.write('Something');
+
+//location property
+/*window.alert('Location: '+ window.location);
+window.location = 'http://www.amazon.com';*/
+
+window.location = window.prompt('Enter a url');
+</script>
+
+
+
+</head>
+
+<body>
+
+<div id="container">
+This is the container div.
+</div>
+
+<script type="text/javascript">
+
+//inner height and inner width
+var mywin_width = window.innerWidth;
+
+var container = document.getElementByID('container');
+container.style.width = (mywin_width >= 800) ? '750px' : '90%';
+container.style.backgroundColor = 'yellow';
+
+
+document.write('innerWidth: ' + window.innerWidth + '<br>');
+document.write('document.body.clientWidth: ' + document.body.clientWidth: + '<br>');
+document.write('container.style.width: ' + container.style.width + '<br>');
+document.write('mywin_width:: ' + mywin_width + '<br>');
+
+
+
+
+
+</script>
+
+
+
+
+
+</body>
+</html>

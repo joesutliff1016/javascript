@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Rotating Page</title>
+<style type="text/css">
+body {
+	margin:0;
+	padding:0;
+	border:0;
+}
+html, body, iframe {
+	height:100%;
+	width:100%;
+	overflow:hidden;
+
+}
+
+</style>
+<script type="text/javascript">
+
+"use strict";
+var pages = new Array(); 
+pages[0] = 'page1.html';
+pages[1] = 'page2.html';
+pages[2] = 'page3.html';
+pages[3] = 'page4.html';
+pages[4] = 'page5.html';
+pages[5] = 'page6.html';
+
+var time = 10; 
+
+var i = 1;
+function setPage()
+{
+	if(i == pages.length)
+	{
+		i = 0;	
+	}
+	document.getElementById('holder').setAttribute('src',pages[i]);
+	i++;
+	
+	 
+
+}
+
+setInterval("setPage()",time * 1000);
+
+
+
+</script>
+</head>
+
+<body>
+<iframe id="holder" src="page1.html"  scrolling="no"></iframe>
+</body>
+</html>

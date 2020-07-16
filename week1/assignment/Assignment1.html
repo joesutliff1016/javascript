@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Number Game</title>
+</head>
+
+<body>
+<script type="text/javascript">
+
+/* <![CDATA[ */
+
+
+var newgame = window.confirm('Would you like to play a game?');
+
+
+
+while(newgame == true){
+	"use strict";
+	var random_num = Math.random() * 100;
+	random_num = Math.ceil(random_num);
+	count = 1;
+	
+	do{
+		var guess = window.prompt('Please enter a number between 1 and 100, inclusive.',' ');
+		
+		if(isNaN(guess)){
+			window.prompt('Hey, numbers only!!! Please enter a number between 1 and 100, inclusive.');
+			
+		}
+		
+		if(guess == random_num){
+		window.prompt('You guessed the number ' + random_num + ' in ' + count + ' tries.');
+		newgame = window.confirm('Play again?');
+		break;
+		
+		}else{
+			if(guess < random_num){
+				window.alert('Too low, to try again!');
+		        count++;
+	}
+	else{
+		
+		window.alert('Too high, to try again!');
+		count++;
+	  
+	}
+		}
+		
+	}while( random_num > 0 ){
+		
+	}
+}
+document.write('Thank you for playing!');
+/* ]]> */
+
+
+
+</script>
+</body>
+</html>

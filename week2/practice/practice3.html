@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Variable Scope</title>
+
+<script type="text/javascript">
+
+// Illustrates variable scope. Improperly declaring function variables can
+overwrite global variables
+
+var mycar = "Honda"; // define local variables
+var paycheck = 1200;
+
+function new_car(){
+	mycar = "Ferrari"; // Defines (if not already defined) or changes value of global variable
+	paycheck = 3500;
+	window.alert('(inside1) You need $' + paycheck + ' to get a ' + mycar);
+}
+
+new_car();
+
+window.alert('(outside) You need $' + paycheck + ' to get a ' + mycar);
+
+</script>
+
+
+
+
+
+
+
+</head>
+
+<body>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Hnadling strings</title>
+</head>
+
+<body>
+<script type="text/javascript">
+/* <![CDATA[ */
+
+// The string object
+var instance_name = new String('string goes here');
+var instance_name2 = new String('string goes here');// string objects not equal
+
+//The string literal
+
+var the_text = 'I am text!';
+var the_text2 = 'I am text!'; // string literal values equal
+
+
+//the length property
+/*alert('text length: + the_text.length');
+
+//String methods
+
+//charAt()
+alert('First character: ' + the_text.charAt(0));
+alert('First character: ' + the_text.charAt(the_text.length - 1));*/
+
+
+//fromCharCode()
+/*alert(String.fromCharCode(72, 73)); //good for email obfuscation(make it difficult to understand
+
+//the concat method
+alert(the_text.concat('' + instance_name +' ' + the_text));
+
+//indexOf() & lastIndexOf()
+alert('Position: ' + the_text.indexOf('t'));
+alert('last Position: ' + the_text.lastIndexOf('t'));*/
+alert('Position: ' + the_text.indexOf('am'));
+
+
+//slice() && substring() (includes the start index, does not include end index
+alert(the_text.slice(5,9));
+alert(the_text.substring(5,9));
+/* ]]> */
+</script>
+</body>
+</html>
